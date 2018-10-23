@@ -1,0 +1,36 @@
+<% include partials/header1.ejs %>
+
+<div class="ui main text container">
+<div class="ui ordered steps">
+  <div class="active step">
+    <div class="content">
+      <div class="title">Search</div>
+      <div class="description">Search the Movie</div>
+    </div>
+  </div>
+  <div class="disabled step">
+    <div class="content">
+      <div class="title">Select</div>
+      <div class="description">Select the Movie</div>
+    </div>
+  </div>
+  <div class="disabled step">
+    <div class="content">
+      <div class="title">Write</div>
+      <div class="description">Write the review</div>
+    </div>
+  </div>
+</div>
+<br>
+<h2>Search Movie</h2>
+
+<form action="/searchm" method="POST" autocomplete="off">
+    <div class="ui input focus">
+    <input id ="autoff" type="text" name="locat" placeholder="Movie"></input>
+    <input class="ui violet big basic button" type="submit">
+    </div>
+</form>
+
+</div>
+
+<% include partials/footer.ejs %>

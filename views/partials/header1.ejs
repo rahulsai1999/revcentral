@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
+
+    </head>
+    <body>
+        <%link="/users/"+currentUser.username%>
+        <div class="ui inverted menu">
+            <div class="ui container">
+                <div class="header item"><i class="book icon"></i>Review Central</div>
+                <a href=<%=link%> class="red item active">Home</a>
+                <a href="/books" class="blue item active">Books</a>
+                <a href="/movies" class="violet item active">Movies & TV</a>
+                <a href="/select" class="orange item active">Add a Review</a>
+    
+    <div class="ui simple dropdown link item">
+    <span class="text"><%=currentUser.username%></span>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="header">Menu</div>
+      
+      <div class="item" onclick="location.href='/reviews'">Your Reviews</a></div>
+      
+      <div class="divider"></div>
+      
+      <div class="header">Account</div>
+      <div class="item" onclick="location.href='/users/<%=currentUser.username%>/details'">Details</div>
+      <div class="item" onclick="location.href='/logout'">Logout</div>
+    </div>
+  </div>
+ </div>
+</div> 
+    

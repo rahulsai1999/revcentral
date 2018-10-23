@@ -1,0 +1,58 @@
+<% include partials/header1.ejs %>
+
+<div class="ui main text container">
+<div class="ui ordered steps">
+  <div class="completed step">
+    <div class="content">
+      <div class="title">Search</div>
+      <div class="description">Search the book</div>
+    </div>
+  </div>
+  <div class="active step">
+    <div class="content">
+      <div class="title">Select</div>
+      <div class="description">Select the book</div>
+    </div>
+  </div>
+  <div class="disabled step">
+    <div class="content">
+      <div class="title">Write</div>
+      <div class="description">Write the review</div>
+    </div>
+  </div>
+</div>
+    <div class="ui huge header">Select the Book</div>
+    <div class="ui top  attached segment">
+        <div class="ui divided items">
+            <% for(var i=0;i<data.items.length;++i){ %>
+            <% var item=data.items[i]; %>
+            <% var isbn=item["volumeInfo"]["industryIdentifiers"][0]["identifier"] %>
+                <div class="item">
+                    <div class="image">
+                        <img src="<%= item["volumeInfo"]["imageLinks"]["thumbnail"]%>">
+                    </div>
+                    <div class="content">
+                         <a class="header" href="#"><%=item.volumeInfo.title%></a>
+                         <div class="meta">
+                             <span><%= item.volumeInfo.publishedDate %></span>
+                         </div>
+                         <div class="description">
+                             <p><%- item["volumeInfo"]["authors"] %></p>
+                         </div>
+                         <div class="extra">
+                             <a class="ui floated basic violet button" href="/selectb/<%=isbn%>"> Write a Review</a>
+                                 <i class="right chevron icon"></i>
+                             </a>
+                         </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer.ejs %>
+
+
+
+
