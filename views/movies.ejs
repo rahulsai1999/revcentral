@@ -1,0 +1,31 @@
+<% include partials/header1.ejs %>
+<div class="ui container">
+
+<h1 class="ui header" style="margin-top:3%;margin-bottom:3%;">Movies</h1>
+
+<div class="ui cards">
+
+    <% for(var i=0;i<data.length;++i){ %>
+        <% var item=data[i]; %>
+
+        <div class="ui fluid card" style="margin-top:2%;margin-bottom:2%">
+            <div class="content">
+                <a class="header" href="/movies/<%=item.id%>">
+                <div class="header"><%=item.title%></div>
+                </a>
+                <a class="image" href="/movies/<%=item.id%>">
+                <img class="right floated small ui image" src="<%=item.imageUrl%>"/>
+                </a>
+                    <br>
+                    <div class="meta"><h4>Year:</h4><%=item.Year%></div>
+                    <div class="meta"><h4>Genre:</h4><%=item.genre%></div>
+                    <div class="meta"><h4>imdb id:</h4><%=item.imdb%></div>
+                    <div class="meta"><h4>Rating:</h4><%=item.avg_rating%></div>
+            </div>
+        </div>
+        <% } %>
+</div>
+
+</div>
+
+<% include partials/footer.ejs %>

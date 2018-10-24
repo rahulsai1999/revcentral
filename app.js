@@ -71,6 +71,95 @@ app.get("/select",isLoggedIn,function(req,res){
    res.render("select"); 
 });
 
+app.get("/books",function(req,res){
+    Book.find({}).populate("reviews").exec(function(err,book){
+        if(err)
+        console.log(err);
+        else
+        {
+            res.render("books",{data:book});
+        }
+    });
+});
+
+app.get("/movies",function(req,res){
+    Movie.find({}).populate("reviews").exec(function(err,movie){
+        if(err)
+        console.log(err);
+        else
+        {
+            res.render("movies",{data:movie});
+        }
+    });
+});
+
+app.get("/books/:id",function(req,res){
+    var id=req.params.id;
+    Book.findById(id).populate("reviews").exec(function(err, book){
+        if(err)
+            console.log(err);
+        else 
+        {
+            res.render("bookview",{data:book});
+        }
+      });
+});
+
+app.get("/movies/:id",function(req,res){
+    var id=req.params.id;
+    Movie.findById(id).populate("reviews").exec(function(err, movie){
+        if(err)
+            console.log(err);
+        else 
+        {
+            res.render("movieview",{data:movie});
+        }
+      });
+});
+
+app.get("/reviews/:id",function(req,res){
+    var id=req.params.id;
+    Review.findById(id,function(err,review){
+        if(err)
+        console.log(err);
+        else
+        res.render("review",{data:review});
+    });
+});
+
+app.get("/rev/:id/edit",isLoggedIn,function(req,res){
+    Review.findById(req.params.id,function(err,review){
+        if(err){
+            console.log(err);
+        } else{
+            res.render("edit",{data:review});
+        }
+    });
+});
+
+app.put("/rev/:id",function(req,res){
+    //change this body shit 
+    Review.findByIdAndUpdate(req.params.id,req.body.info,function(err,updated){
+        if(err){
+            console.log(err);
+        } else{
+            res.redirect("/books");
+            console.log("Book successfully Updated");
+        }
+    });
+});
+
+app.delete("/rev/:id",function(req,res){
+    Review.findByIdAndRemove(req.params.id,function(err,deleted){
+        if(err){
+            console.log(err);
+        }     
+        else{
+            res.redirect("/books");
+            console.log("Book successfully deleted");
+        }
+    });
+});
 
 //book selection and review
 
@@ -213,7 +302,7 @@ app.post("/finalm",function(req, res){
         {
             var movie = new Movie({
                 title:parsedData.Title,
-                year:parsedData.Year,
+                Year:parsedData.Year,
                 genre:parsedData.Genre,
                 imdb:parsedData.imdbID,
                 imageUrl:parsedData.Poster,

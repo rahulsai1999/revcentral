@@ -1,0 +1,41 @@
+<% include partials/header1.ejs %>
+<div class="ui container">
+
+    <div class="ui fluid card" style="margin-top:2%;margin-bottom:2%">
+            <div class="content">
+                <a class="header" href="/movies/<%=data.id%>">
+                <div class="header"><%=data.title%></div>
+                </a>
+                <a class="image" href="/movies/<%=data.id%>">
+                <img class="right floated small ui image" src="<%=data.imageUrl%>"/>
+                </a>
+                    <br>
+                    <div class="meta"><h4>Year:</h4><%=data.Year%></div>
+                    <div class="meta"><h4>Genre:</h4><%=data.genre%></div>
+                    <div class="meta"><h4>imdb:</h4><%=data.imdb%></div>
+                    <div class="meta"><h4>Rating:</h4><%=data.avg_rating%></div>
+            </div>
+    </div>
+    <br>
+    <h1 class="ui header">Reviews</h1>
+    <br>
+    <div class="ui cards">
+        <% for(var i=0;i<data.reviews.length;i++){%>
+        <% var item=data.reviews[i] %>
+            <a class="ui fluid card" href="/reviews/<%=item.id%>">
+                <div class="content">
+                    <div class="header"><%=item.title%></div>
+                    <div class="meta"><span class="category"><%=item.date%></span></div>
+                    <div class="description"><p><%=item.content%></p></div>
+                </div>
+                <div class="extra content">
+                    <div class="left floated author">Rating: <%=item.rating%></div>
+                    <div class="right floated author">Author: <%=item.author%></div>
+                </div>
+            </a>
+        <% } %>
+    </div>
+
+</div>
+
+<% include partials/footer.ejs %>
