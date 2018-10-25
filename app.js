@@ -139,7 +139,7 @@ app.get("/rev/:id/edit",isLoggedIn,function(req,res){
 
 app.put("/rev/:id",function(req,res){
     //change this body shit 
-    Review.findByIdAndUpdate(req.params.id,req.body.info,function(err,updated){
+    Review.findByIdAndUpdate(req.params.id,req.body.block,function(err,updated){
         if(err){
             console.log(err);
         } else{
@@ -149,7 +149,7 @@ app.put("/rev/:id",function(req,res){
     });
 });
 
-app.delete("/rev/:id",function(req,res){
+app.get("/rev/:id/delete",function(req,res){
     Review.findByIdAndRemove(req.params.id,function(err,deleted){
         if(err){
             console.log(err);
@@ -158,6 +158,15 @@ app.delete("/rev/:id",function(req,res){
             res.redirect("/books");
             console.log("Book successfully deleted");
         }
+    });
+});
+
+app.get("/myreviews",function(req,res){
+    Review.find({author:curu.username},function(err,found){
+        if(err)
+        console.log(err);
+        else
+        res.render("myreviews",{data:found});
     });
 });
 

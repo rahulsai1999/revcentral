@@ -1,0 +1,27 @@
+<%include partials/header1.ejs%>
+<div class="ui container">
+<br>
+<h1 class="ui header">Your Reviews (<%=data.length%>)</h1>
+    <br>
+    <div class="ui cards">
+        <% for(var i=0;i<data.length;i++){%>
+        <% var item=data[i] %>
+            <a class="ui fluid card" href="/reviews/<%=item.id%>" style="margin-top:2%;margin-bottom:2%">
+                <div class="content">
+                    <div class="header"><%=item.title%></div>
+                    <div class="meta"><span class="category"><%=item.date%></span></div>
+                    <div class="description"><p><%=item.content%></p></div>
+                </div>
+                <div class="extra content">
+                    <div class="left floated author">Rating: <%=item.rating%></div>
+                    <div class="right floated author">Author: <%=item.author%></div>
+                </div>
+                <div class="extra content">
+                    <a class="ui basic green button" href="/rev/<%=item.id%>/edit">Update</a>
+                    <a class="ui basic red button" href="/rev/<%=item.id%>/delete">Delete</a>
+                </div>
+            </a>
+        <% } %>
+    </div>
+</div>    
+<%include partials/footer.ejs%>    

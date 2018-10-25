@@ -1,0 +1,22 @@
+<%include partials/header1.ejs%>
+<div class="ui container">
+    <div class="ui main text container segment">
+        <div class="ui header">Review</div>
+        <h4 class="ui header"><%=data.date%></h4>
+        <form class="ui form" action="#" method="#" autocomplete="off">
+            <div class="disabled field">
+                <label>Title</label>
+                <input type="text" name="title" placeholder="Title" value="<%=data.title%>">
+            </div>
+            <div class="disabled field">
+                <label>Rating</label>
+                <input type="text" name="rating" placeholder="Rating(out of 10)" value="<%=data.rating%>">
+            </div>
+            <div class="disabled field">
+                <label>Review</label>
+                <textarea name="content" placeholder="Write your review in 100-200 words"><%=data.content%></textarea>
+            </div>
+        </form>
+    </div>
+</div>
+<%include partials/footer.ejs%>

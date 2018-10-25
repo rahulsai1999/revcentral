@@ -1,0 +1,23 @@
+<%include partials/header1.ejs%>
+<div class="ui container">
+    <div class="ui main text container segment">
+        <div class="ui header">Review</div>
+        <h4 class="ui header"><%=data.date%></h4>
+        <form class="ui form" action="/rev/<%=data.id%>?_method=PUT" method="POST" autocomplete="off">
+            <div class="field">
+                <label>Title</label>
+                <input type="text" name="block[title]" placeholder="Title" value="<%=data.title%>">
+            </div>
+            <div class="field">
+                <label>Rating</label>
+                <input type="text" name="block[rating]" placeholder="Rating(out of 10)" value="<%=data.rating%>">
+            </div>
+            <div class="field">
+                <label>Review</label>
+                <textarea name="block[content]" placeholder="Write your review in 100-200 words"><%=data.title%></textarea>
+            </div>
+            <input class="ui violet big basic button" type="submit">
+        </form>
+    </div>
+</div>
+<%include partials/footer.ejs%>
