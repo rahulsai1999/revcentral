@@ -13,8 +13,8 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var methodOverride = require("method-override");
 var app=express();
 
-mongoose.connect("mongodb://localhost:27017/bookrev_sample",{ useNewUrlParser: true });
-//mongoose.connect("mongodb://admin:admin83@ds151012.mlab.com:51012/revcentral");
+//mongoose.connect("mongodb://localhost:27017/bookrev_sample",{ useNewUrlParser: true });
+mongoose.connect("mongodb://admin:admin83@ds151012.mlab.com:51012/revcentral");
 
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
