@@ -60,6 +60,9 @@ var parsedData={};
 
 //rest routes
 app.get("/",function(req,res){
+    if(curu)
+    res.redirect("/main")
+    else
     res.render("home");
 });
 

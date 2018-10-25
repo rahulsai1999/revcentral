@@ -5,11 +5,10 @@
 
     </head>
     <body>
-        <%link="/users/"+currentUser.username%>
         <div class="ui inverted menu">
             <div class="ui container">
                 <div class="header item"><i class="book icon"></i>Review Central</div>
-                <a href=<%=link%> class="red item active">Home</a>
+                <a href="/" class="red item active">Home</a>
                 <a href="/books" class="blue item active">Books</a>
                 <a href="/movies" class="violet item active">Movies & TV</a>
                 <a href="/select" class="orange item active">Add a Review</a>
@@ -25,7 +24,6 @@
       <div class="divider"></div>
       
       <div class="header">Account</div>
-      <div class="item" onclick="location.href='/users/<%=currentUser.username%>/details'">Details</div>
       <div class="item" onclick="location.href='/logout'">Logout</div>
     </div>
   </div>
